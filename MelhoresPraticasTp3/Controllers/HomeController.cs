@@ -17,8 +17,7 @@ namespace MelhoresPraticasTp3.Controllers {
         static int counter = 5;
         public ActionResult Index() {
 
-            var studentQuery = new StudentEmailSpecification()
-                .AndNot(new StudentArchivedSpecification());
+            var studentQuery = new StudentEmailSpecification();
 
             return View(StudentRepository.GetStudentsByRule(studentQuery).ToList());
         }

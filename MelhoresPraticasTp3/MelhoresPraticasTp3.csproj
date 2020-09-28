@@ -142,11 +142,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\Enum\Status.cs" />
     <Compile Include="Domain\Factory\StudentFactory.cs" />
-    <Compile Include="Domain\Model\HardStudying.cs" />
+    <Compile Include="Domain\Strategies\StudyHardBehaviour.cs" />
     <Compile Include="Domain\Model\HighSchoolStudent.cs" />
-    <Compile Include="Domain\Model\IStudyBehaviour.cs" />
+    <Compile Include="Domain\Strategies\IStudyBehaviour.cs" />
     <Compile Include="Domain\Model\PrimaryStudent.cs" />
-    <Compile Include="Domain\Model\SimpleStudying.cs" />
+    <Compile Include="Domain\Strategies\StudyLightBehaviour.cs" />
     <Compile Include="Domain\Specifications\Abstractions\CompositeSpecification.cs" />
     <Compile Include="Domain\Specifications\Abstractions\ISpecification.cs" />
     <Compile Include="Domain\Specifications\Conditionals\AndSpecification.cs" />

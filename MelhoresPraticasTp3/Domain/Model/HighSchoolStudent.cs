@@ -18,7 +18,7 @@ namespace MelhoresPraticasTp3.Domain.Model {
     }
 
         private void InitBehaviour() {
-            StudyBehaviour = new HardStudying();
+            StudyBehaviour = new StudyHardBehaviour();
             Type = "High School Student";
         }
 }

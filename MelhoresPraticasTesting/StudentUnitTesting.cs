@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MelhoresPraticasTp3.ApplicationServices;
 using MelhoresPraticasTp3.Domain.Enums;
+using MelhoresPraticasTp3.Domain.Factory;
 using MelhoresPraticasTp3.Domain.Model;
 using MelhoresPraticasTp3.Domain.Repositories;
 using MelhoresPraticasTp3.Domain.ValueObject;
@@ -34,7 +35,7 @@ namespace MelhoresPraticasTesting {
         [TestMethod]
         public void CanAddStudentToRepository() {
             //Arrange
-            Student student = new PrimaryStudent() { Id = 2, Name = new Name("Julliana", "Assis"), Cpf = new Cpf("16105960649"), Email = "julliana@gmail.com", Archived = false };
+            Student student = StudentFactory.Create("Primary", 5, "Teste", "Testeee", "16105960649", "teste@gmail.com");
             this.MockStudentRepository.Setup(x => x.Save(student)).Returns(Status.SUCCESS);
 
             // Act
@@ -45,10 +46,24 @@ namespace MelhoresPraticasTesting {
             Assert.AreEqual(result, Status.SUCCESS);
         }
 
+        [TestMethod]
+        public void CanDeleteStudentFromRepository() {
+            // Arrange
+            int studentId = 2;
+            this.MockStudentRepository.Setup(x => x.Delete(studentId)).Returns(Status.SUCCESS);
+
+            // Act
+            var result = this.MockStudentRepository.Object.Delete(studentId);
+
+            this.MockStudentRepository.Verify(x => x.Delete(studentId), Times.Once());
+            Assert.AreEqual(result, Status.SUCCESS);
+        }
+
 
         [TestMethod]
         public void CanReturnAllStudents() {
             // Arrange
+            int totalStudentsInRepository = 4;
             this.MockStudentRepository.Setup(x => x.ListStudents()).Returns(this.Students);
 
             // Act
@@ -56,7 +71,7 @@ namespace MelhoresPraticasTesting {
 
             // Assert
             Assert.IsNotNull(students);
-            Assert.AreEqual(4, students.Count);
+            Assert.AreEqual(totalStudentsInRepository, students.Count);
         }
 
         [TestMethod]

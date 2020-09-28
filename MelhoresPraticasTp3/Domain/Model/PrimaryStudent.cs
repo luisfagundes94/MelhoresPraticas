@@ -18,7 +18,7 @@ namespace MelhoresPraticasTp3.Domain.Model {
         }
 
         private void InitPrimaryStudentBehaviour() {
-            StudyBehaviour = new SimpleStudying();
+            StudyBehaviour = new StudyLightBehaviour();
             Type = "Primary Student";
         }
     }

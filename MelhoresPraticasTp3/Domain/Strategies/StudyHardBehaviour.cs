@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 
 namespace MelhoresPraticasTp3.Domain.Model {
-    public class SimpleStudying : IStudyBehaviour {
+    public class StudyHardBehaviour : IStudyBehaviour {
         public string Study() {
-            return "Studying!";
+            return "Studying hard!";
         }
+
     }
 }

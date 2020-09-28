@@ -40,7 +40,12 @@ namespace MelhoresPraticasTp3.Repositories {
         }
 
         public Student GetStudent(int id) {
-            return Students.Find(student => student.Id == id);
+            try {
+                return Students.Find(student => student.Id == id);
+            } catch {
+                return null;
+            }
+            
         }
 
         public Status Save(Student student) {
@@ -53,14 +58,19 @@ namespace MelhoresPraticasTp3.Repositories {
         }
 
         public Status Update(int id, Student updatedStudent) {
-            foreach (Student student in Students) {
-                if (student.Id == id) {
-                    student.Name = updatedStudent.Name;
-                    student.Cpf = updatedStudent.Cpf;
-                    student.Email = updatedStudent.Email;
-                }
-            };
-            return Status.SUCCESS;
+
+            try {
+                foreach (Student student in Students) {
+                    if (student.Id == id) {
+                        student.Name = updatedStudent.Name;
+                        student.Cpf = updatedStudent.Cpf;
+                        student.Email = updatedStudent.Email;
+                    }
+                };
+                return Status.SUCCESS;
+            } catch {
+                return Status.ERROR;
+            }
         }
     }
 }
