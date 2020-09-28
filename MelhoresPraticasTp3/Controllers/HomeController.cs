@@ -38,7 +38,7 @@ namespace MelhoresPraticasTp3.Controllers {
                     collection["Name.First"],
                     collection["Name.Last"],
                     collection["Cpf.Value"],
-                    collection["Email.Address"]
+                    collection["Email"]
                     );
 
                 StudentRepository.Save(student);
@@ -77,7 +77,7 @@ namespace MelhoresPraticasTp3.Controllers {
                 var studentLastName = collection["Name.Last"];
                 student.Name = new Name(studentFirstName, studentLastName);
                 student.Cpf = new Cpf(collection["Cpf.Value"]);
-                student.Email = collection["Email.Address"];
+                student.Email = collection["Email"];
 
                 StudentRepository.Update(id, student);
 
